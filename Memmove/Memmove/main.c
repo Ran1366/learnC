@@ -12,30 +12,18 @@ void * Memcpy(void * dest, const void * src, size_t num)
 	int i = 0;
 	char *pdest = (char *)dest;
 	char *psrc = (char *)src;
-	//如果内存重叠则倒着覆盖
-	if (pdest >= psrc && pdest <= (psrc + num))
+	for (i = 0; i < num; ++i)
 	{
-		for (i = num - 1 ; i >= 0 ; --i)
-		{
-			pdest[i] = psrc[i];
-		}
-	}
-	//否则正常顺序复制
-	else
-	{
-		for (i = 0; i < num; ++i)
-		{
-			pdest[i] = psrc[i];
-		}
+		pdest[i] = psrc[i];
 	}
 	return dest;
 }
 int main()
 {
-	int a[] = {1,2,3,4};
-	int b[4] = {5,6};
-	Memcpy(b,a,12);
-	for (int i = 0 ; i < 4 ; ++i)
+	int a[] = { 1,2,3,4 };
+	int b[4] = { 5,6 };
+	Memcpy(b, a, 12);
+	for (int i = 0; i < 4; ++i)
 	{
 		printf("%d ", b[i]);
 	}
